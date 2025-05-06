@@ -157,7 +157,17 @@ class ConnectionHandler:
                     return
 
             # 获取客户端ip地址
-            self.client_ip = ws.remote_address[0]
+            x_forwarded_for = self.headers.get("X-Forwarded-For") or self.headers.get("x-forwarded-for")
+            x_real_ip = self.headers.get("X-Real-IP") or self.headers.get("x-real-ip")
+            if x_forwarded_for:
+                # 通常是一个逗号分隔的 IP 列表，取第一个
+                self.client_ip = x_forwarded_for.split(',')[0].strip()
+            elif x_real_ip:
+                self.client_ip = x_real_ip.strip()
+            else:
+                # 兜底，直接取 remote_address
+                self.client_ip = ws.remote_address[0]
+                
             self.logger.bind(tag=TAG).info(
                 f"{self.client_ip} conn - Headers: {self.headers}"
             )
