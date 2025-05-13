@@ -75,6 +75,7 @@ class ConnectionHandler:
         self.prompt = None
         self.welcome_msg = None
         self.max_output_size = 0
+        self.chat_history_conf = 0
 
         # 客户端状态相关
         self.client_abort = False
@@ -260,11 +261,15 @@ class ConnectionHandler:
             self.logger.bind(tag=TAG).info("收到服务器重启指令，准备执行...")
 
             # 发送确认响应
-            await self.websocket.send(json.dumps({
-                "type": "server_response",
-                "status": "success",
-                "message": "服务器重启中..."
-            }))
+            await self.websocket.send(
+                json.dumps(
+                    {
+                        "type": "server_response",
+                        "status": "success",
+                        "message": "服务器重启中...",
+                    }
+                )
+            )
 
             # 异步执行重启操作
             def restart_server():
@@ -276,7 +281,7 @@ class ConnectionHandler:
                     stdin=sys.stdin,
                     stdout=sys.stdout,
                     stderr=sys.stderr,
-                    start_new_session=True
+                    start_new_session=True,
                 )
                 os._exit(0)
 
@@ -285,11 +290,15 @@ class ConnectionHandler:
 
         except Exception as e:
             self.logger.bind(tag=TAG).error(f"重启失败: {str(e)}")
-            await self.websocket.send(json.dumps({
-                "type": "server_response",
-                "status": "error",
-                "message": f"Restart failed: {str(e)}"
-            }))
+            await self.websocket.send(
+                json.dumps(
+                    {
+                        "type": "server_response",
+                        "status": "error",
+                        "message": f"Restart failed: {str(e)}",
+                    }
+                )
+            )
 
     def _initialize_components(self):
         """初始化组件"""
@@ -315,6 +324,8 @@ class ConnectionHandler:
     def _init_report_threads(self):
         """初始化ASR和TTS上报线程"""
         if not self.read_config_from_api or self.need_bind:
+            return
+        if self.chat_history_conf == 0:
             return
         if self.tts_report_thread is None or not self.tts_report_thread.is_alive():
             self.tts_report_thread = threading.Thread(
@@ -389,7 +400,8 @@ class ConnectionHandler:
             self.config["prompt"] = private_config["prompt"]
         if private_config.get("device_max_output_size", None) is not None:
             self.max_output_size = int(private_config["device_max_output_size"])
-
+        if private_config.get("chat_history_conf", None) is not None:
+            self.chat_history_conf = int(private_config["chat_history_conf"])
         try:
             modules = initialize_modules(
                 self.logger,
@@ -848,7 +860,7 @@ class ConnectionHandler:
                 if future is None:
                     continue
                 text = None
-                opus_datas, tts_file = [], None
+                audio_datas, tts_file = [], None
                 try:
                     self.logger.bind(tag=TAG).debug("正在处理TTS任务...")
                     tts_timeout = int(self.config.get("tts_timeout", 10))
