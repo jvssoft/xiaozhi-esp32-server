@@ -1,14 +1,12 @@
 from typing import Optional, Tuple, List
-import opuslib_next
 from core.providers.asr.base import ASRProviderBase
-import os
+from core.providers.asr.dto.dto import InterfaceType
 import ssl
 import json
-import uuid
-import wave
 import websockets
 from config.logger import setup_logging
 import asyncio
+import re
 
 TAG = __name__
 logger = setup_logging()
@@ -22,9 +20,15 @@ class ASRProvider(ASRProviderBase):
         :param delete_audio_file: Boolean to indicate whether to delete audio files after processing.
         """
         super().__init__()
+        self.interface_type = InterfaceType.NON_STREAM
         self.host = config.get("host", "localhost")
         self.port = config.get("port", 10095)
-        self.is_ssl = config.get("is_ssl", True)
+        self.api_key = config.get("api_key", "none")
+        self.is_ssl = str(config.get("is_ssl", True)).lower() in (
+            "true",
+            "1",
+            "yes",
+        )
         self.output_dir = config.get("output_dir")
         self.delete_audio_file = delete_audio_file
         self.uri = (
@@ -36,20 +40,6 @@ class ASRProvider(ASRProviderBase):
         if self.ssl_context:
             self.ssl_context.check_hostname = False
             self.ssl_context.verify_mode = ssl.CERT_NONE
-
-    def save_audio_to_file(self, pcm_data: List[bytes], session_id: str) -> str:
-        """PCM数据保存为WAV文件"""
-        module_name = __name__.split(".")[-1]
-        file_name = f"asr_{module_name}_{session_id}_{uuid.uuid4()}.wav"
-        file_path = os.path.join(self.output_dir, file_name)
-
-        with wave.open(file_path, "wb") as wf:
-            wf.setnchannels(1)
-            wf.setsampwidth(2)  # 2 bytes = 16-bit
-            wf.setframerate(16000)
-            wf.writeframes(b"".join(pcm_data))
-
-        return file_path
 
     async def _receive_responses(self, ws) -> None:
         """
@@ -130,9 +120,13 @@ class ASRProvider(ASRProviderBase):
             pass
         else:
             file_path = self.save_audio_to_file(pcm_data, session_id)
-
+        auth_header = {"Authorization": "Bearer; {}".format(self.api_key)}
         async with websockets.connect(
-            self.uri, subprotocols=["binary"], ping_interval=None, ssl=self.ssl_context
+            self.uri,
+            additional_headers=auth_header,
+            subprotocols=["binary"],
+            ping_interval=None,
+            ssl=self.ssl_context,
         ) as ws:
             try:
                 # Use asyncio to handle WebSocket communication
@@ -157,6 +151,9 @@ class ASRProvider(ASRProviderBase):
 
                 # Get the result from the receive task
                 result = receive_task.result()
+                match = re.match(r"<\|(.*?)\|><\|(.*?)\|><\|(.*?)\|>(.*)", result)
+                if match:
+                    result = match.group(4).strip()
                 return (
                     result,
                     file_path,

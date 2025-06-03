@@ -36,6 +36,9 @@ public class AgentEntity {
     @Schema(description = "大语言模型标识")
     private String llmModelId;
 
+    @Schema(description = "VLLM模型标识")
+    private String vllmModelId;
+
     @Schema(description = "语音合成模型标识")
     private String ttsModelId;
 
@@ -53,6 +56,10 @@ public class AgentEntity {
 
     @Schema(description = "角色设定参数")
     private String systemPrompt;
+
+    @Schema(description = "总结记忆", example = "构建可生长的动态记忆网络，在有限空间内保留关键信息的同时，智能维护信息演变轨迹\n" +
+            "根据对话记录，总结user的重要信息，以便在未来的对话中提供更个性化的服务", required = false)
+    private String summaryMemory;
 
     @Schema(description = "语言编码")
     private String langCode;
