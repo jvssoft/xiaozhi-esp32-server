@@ -103,9 +103,6 @@ async def sendAudio(conn, audios, pre_buffer=True):
             await asyncio.sleep(delay)
 
         await conn.websocket.send(opus_packet)
-    
-        #解决在长时间播放得时候会自动退出的问题
-        conn.client_no_voice_last_time = 0.0
 
         play_position += frame_duration
 
