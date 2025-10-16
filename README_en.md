@@ -38,9 +38,9 @@ Supports MCP endpoints and voiceprint recognition
 </p>
 
 <p align="center">
-By Professor Siyuan Liu Research and Development Group (South China University of Technology)
+Spearheaded by Professor Siyuan Liu's Team (South China University of Technology)
 </br>
-刘思源教授团队研发（华南理工大学）
+刘思源教授团队主导研发（华南理工大学）
 </br>
 <img src="./docs/images/hnlg.jpg" alt="South China University of Technology" width="50%">
 </p>
@@ -58,72 +58,72 @@ Want to see the usage effects? Click the videos below 🎥
     <td>
         <a href="https://www.bilibili.com/video/BV1FMFyejExX" target="_blank">
          <picture>
-           <img alt="Xiaozhi ESP32 connecting to own backend model" src="docs/images/demo1.png" />
+           <img alt="响应速度感受" src="docs/images/demo9.png" />
          </picture>
         </a>
     </td>
     <td>
-        <a href="https://www.bilibili.com/video/BV1CDKWemEU6" target="_blank">
+        <a href="https://www.bilibili.com/video/BV1vchQzaEse" target="_blank">
          <picture>
-           <img alt="Custom voice timbre" src="docs/images/demo2.png" />
+           <img alt="速度优化秘诀" src="docs/images/demo6.png" />
          </picture>
         </a>
     </td>
     <td>
-        <a href="https://www.bilibili.com/video/BV12yA2egEaC" target="_blank">
+        <a href="https://www.bilibili.com/video/BV1C1tCzUEZh" target="_blank">
          <picture>
-           <img alt="Using Cantonese for communication" src="docs/images/demo3.png" />
+           <img alt="复杂医疗场景" src="docs/images/demo1.png" />
          </picture>
         </a>
     </td>
     <td>
-        <a href="https://www.bilibili.com/video/BV1pNXWYGEx1" target="_blank">
+        <a href="https://www.bilibili.com/video/BV1zUW5zJEkq" target="_blank">
          <picture>
-           <img alt="Controlling home appliances" src="docs/images/demo5.png" />
+           <img alt="MQTT指令下发" src="docs/images/demo4.png" />
          </picture>
         </a>
     </td>
     <td>
-        <a href="https://www.bilibili.com/video/BV1kgA2eYEQ9" target="_blank">
+        <a href="https://www.bilibili.com/video/BV1Exu3zqEDe" target="_blank">
          <picture>
-           <img alt="Lowest cost configuration" src="docs/images/demo4.png" />
+           <img alt="声纹识别" src="docs/images/demo14.png" />
          </picture>
         </a>
     </td>
   </tr>
   <tr>
     <td>
-        <a href="https://www.bilibili.com/video/BV1Vy96YCE3R" target="_blank">
+        <a href="https://www.bilibili.com/video/BV1pNXWYGEx1" target="_blank">
          <picture>
-           <img alt="Custom voice timbre" src="docs/images/demo6.png" />
+           <img alt="控制家电开关" src="docs/images/demo5.png" />
+         </picture>
+        </a>
+    </td>
+    <td>
+        <a href="https://www.bilibili.com/video/BV1ZQKUzYExM" target="_blank">
+         <picture>
+           <img alt="MCP接入点" src="docs/images/demo13.png" />
+         </picture>
+        </a>
+    </td>
+    <td>
+      <a href="https://www.bilibili.com/video/BV1TJ7WzzEo6" target="_blank">
+         <picture>
+           <img alt="多指令任务" src="docs/images/demo11.png" />
          </picture>
         </a>
     </td>
     <td>
         <a href="https://www.bilibili.com/video/BV1VC96Y5EMH" target="_blank">
          <picture>
-           <img alt="Playing music" src="docs/images/demo7.png" />
+           <img alt="播放音乐" src="docs/images/demo7.png" />
          </picture>
         </a>
     </td>
     <td>
         <a href="https://www.bilibili.com/video/BV1Z8XuYZEAS" target="_blank">
          <picture>
-           <img alt="Weather plugin" src="docs/images/demo8.png" />
-         </picture>
-        </a>
-    </td>
-    <td>
-        <a href="https://www.bilibili.com/video/BV178XuYfEpi" target="_blank">
-         <picture>
-           <img alt="IOT command control devices" src="docs/images/demo9.png" />
-         </picture>
-        </a>
-    </td>
-    <td>
-        <a href="https://www.bilibili.com/video/BV17LXWYvENb" target="_blank">
-         <picture>
-           <img alt="News broadcasting" src="docs/images/demo0.png" />
+           <img alt="天气插件" src="docs/images/demo8.png" />
          </picture>
         </a>
     </td>
@@ -132,35 +132,35 @@ Want to see the usage effects? Click the videos below 🎥
     <td>
       <a href="https://www.bilibili.com/video/BV12J7WzBEaH" target="_blank">
          <picture>
-           <img alt="Real-time interruption" src="docs/images/demo10.png" />
+           <img alt="实时打断" src="docs/images/demo10.png" />
          </picture>
         </a>
     </td>
     <td>
       <a href="https://www.bilibili.com/video/BV1Co76z7EvK" target="_blank">
          <picture>
-           <img alt="Photo recognition of objects" src="docs/images/demo12.png" />
+           <img alt="拍照识物品" src="docs/images/demo12.png" />
          </picture>
         </a>
     </td>
     <td>
-      <a href="https://www.bilibili.com/video/BV1TJ7WzzEo6" target="_blank">
+        <a href="https://www.bilibili.com/video/BV1CDKWemEU6" target="_blank">
          <picture>
-           <img alt="Multi-command tasks" src="docs/images/demo11.png" />
+           <img alt="自定义音色" src="docs/images/demo2.png" />
          </picture>
         </a>
     </td>
     <td>
-        <a href="https://www.bilibili.com/video/BV1ZQKUzYExM" target="_blank">
+        <a href="https://www.bilibili.com/video/BV12yA2egEaC" target="_blank">
          <picture>
-           <img alt="MCP endpoint" src="docs/images/demo13.png" />
+           <img alt="使用粤语交流" src="docs/images/demo3.png" />
          </picture>
         </a>
     </td>
     <td>
-        <a href="https://www.bilibili.com/video/BV1Exu3zqEDe" target="_blank">
+        <a href="https://www.bilibili.com/video/BV17LXWYvENb" target="_blank">
          <picture>
-           <img alt="Voiceprint recognition" src="docs/images/demo14.png" />
+           <img alt="播报新闻" src="docs/images/demo0.png" />
          </picture>
         </a>
     </td>
@@ -194,6 +194,7 @@ This project provides two deployment methods. Please choose based on your specif
 
 ```
 Intelligent Control Console Address: https://2662r3426b.vicp.fun
+Intelligent Control Console Address (H5): https://2662r3426b.vicp.fun/h5/index.html
 
 Service Test Tool: https://2662r3426b.vicp.fun/test/
 OTA Interface Address: https://2662r3426b.vicp.fun/xiaozhi/ota/
@@ -236,15 +237,16 @@ This project provides the following testing tools to help you verify the system 
 ![请参考-全模块安装架构图](docs/images/deploy2.png)
 | Feature Module | Description |
 |:---:|:---|
-| Core Architecture | Based on WebSocket and HTTP servers, provides complete console management and authentication system |
+| Core Architecture | Based on [MQTT+UDP gateway](https://github.com/xinnan-tech/xiaozhi-esp32-server/blob/main/docs/mqtt-gateway-integration.md), WebSocket and HTTP servers, provides complete console management and authentication system |
 | Voice Interaction | Supports streaming ASR(speech recognition), streaming TTS(speech synthesis), VAD(voice activity detection), supports multi-language recognition and voice processing |
 | Voiceprint Recognition | Supports multi-user voiceprint registration, management, and recognition, processes in parallel with ASR, real-time speaker identity recognition and passes to LLM for personalized responses |
 | Intelligent Dialogue | Supports multiple LLM(large language models), implements intelligent dialogue |
 | Visual Perception | Supports multiple VLLM(vision large models), implements multimodal interaction |
 | Intent Recognition | Supports LLM intent recognition, Function Call function calling, provides plugin-based intent processing mechanism |
 | Memory System | Supports local short-term memory, mem0ai interface memory, with memory summarization functionality |
+| Command Delivery | Supports MCP command delivery to ESP32 devices via MQTT protocol from Smart Console |
 | Tool Calling | Supports client IOT protocol, client MCP protocol, server MCP protocol, MCP endpoint protocol, custom tool functions |
-| Management Backend | Provides Web management interface, supports user management, system configuration, and device management |
+| Management Backend | Provides Web management interface, supports user management, system configuration and device management; Supports Simplified Chinese, Traditional Chinese and English display |
 | Testing Tools | Provides performance testing tools, vision model testing tools, and audio interaction testing tools |
 | Deployment Support | Supports Docker deployment and local deployment, provides complete configuration file management |
 | Plugin System | Supports functional plugin extensions, custom plugin development, and plugin hot-loading |
@@ -258,7 +260,7 @@ If you are a software developer, here is an [Open Letter to Developers](docs/con
 ---
 
 ## Product Ecosystem 👬
-Xiaozhi is an ecosystem. When using this product, you can also check out other excellent projects in this ecosystem
+Xiaozhi is an ecosystem. When using this product, you can also check out other [excellent projects](https://github.com/78/xiaozhi-esp32?tab=readme-ov-file#%E7%9B%B8%E5%85%B3%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE) in this ecosystem
 
 | Project Name | Project Address | Project Description |
 |:---------------------|:--------|:--------|
@@ -279,7 +281,7 @@ Xiaozhi is an ecosystem. When using this product, you can also check out other e
 | FastGPT interface calls | FastGPT | - |
 | Coze interface calls | Coze | - |
 
-In fact, any LLM that supports OpenAI interface calls can be integrated and used.
+In fact, any LLM that supports OpenAI interface calls can be integrated and used, including Xinference and HomeAssistant interfaces.
 
 ---
 
@@ -297,7 +299,7 @@ In fact, any VLLM that supports OpenAI interface calls can be integrated and use
 
 | Usage Method | Supported Platforms | Free Platforms |
 |:---:|:---:|:---:|
-| Interface calls | EdgeTTS, Volcano Engine Doubao TTS, Tencent Cloud, Alibaba Cloud TTS, CosyVoiceSiliconflow, TTS302AI, CozeCnTTS, GizwitsTTS, ACGNTTS, OpenAITTS, Lingxi Streaming TTS | Lingxi Streaming TTS, EdgeTTS, CosyVoiceSiliconflow(partial) |
+| Interface calls | EdgeTTS, Volcano Engine Doubao TTS, Tencent Cloud, Alibaba Cloud TTS, AliYun Stream TTS, CosyVoiceSiliconflow, TTS302AI, CozeCnTTS, GizwitsTTS, ACGNTTS, OpenAITTS, Lingxi Streaming TTS, MinimaxTTS | Lingxi Streaming TTS, EdgeTTS, CosyVoiceSiliconflow(partial) |
 | Local services | FishSpeech, GPT_SOVITS_V2, GPT_SOVITS_V3, MinimaxTTS | FishSpeech, GPT_SOVITS_V2, GPT_SOVITS_V3, MinimaxTTS |
 
 ---
@@ -352,8 +354,10 @@ In fact, any VLLM that supports OpenAI interface calls can be integrated and use
 | <img src="./docs/images/logo_bailing.png" width="160"> | [Bailing Voice Dialogue Robot](https://github.com/wwbin2017/bailing) | This project is inspired by [Bailing Voice Dialogue Robot](https://github.com/wwbin2017/bailing) and implemented on its basis |
 | <img src="./docs/images/logo_tenclass.png" width="160"> | [Tenclass](https://www.tenclass.com/) | Thanks to [Tenclass](https://www.tenclass.com/) for formulating standard communication protocols, multi-device compatibility solutions, and high-concurrency scenario practice demonstrations for the Xiaozhi ecosystem; providing full-link technical documentation support for this project |
 | <img src="./docs/images/logo_xuanfeng.png" width="160"> | [Xuanfeng Technology](https://github.com/Eric0308) | Thanks to [Xuanfeng Technology](https://github.com/Eric0308) for contributing function calling framework, MCP communication protocol, and plugin-based calling mechanism implementation code. Through standardized instruction scheduling system and dynamic expansion capabilities, it significantly improves the interaction efficiency and functional extensibility of frontend devices (IoT) |
+| <img src="./docs/images/logo_junsen.png" width="160"> | [huangjunsen](https://github.com/huangjunsen0406) | Thanks to [huangjunsen](https://github.com/huangjunsen0406) for contributing the `Smart Control Console Mobile` module, which enables efficient control and real-time interaction across mobile devices, significantly enhancing the system's operational convenience and management efficiency in mobile scenarios. |
 | <img src="./docs/images/logo_huiyuan.png" width="160"> | [Huiyuan Design](http://ui.kwd988.net/) | Thanks to [Huiyuan Design](http://ui.kwd988.net/) for providing professional visual solutions for this project, using their design practical experience serving over a thousand enterprises to empower this project's product user experience |
 | <img src="./docs/images/logo_qinren.png" width="160"> | [Xi'an Qinren Information Technology](https://www.029app.com/) | Thanks to [Xi'an Qinren Information Technology](https://www.029app.com/) for deepening this project's visual system, ensuring consistency and extensibility of overall design style in multi-scenario applications |
+| <img src="./docs/images/logo_contributors.png" width="160"> | [Code Contributors](https://github.com/xinnan-tech/xiaozhi-esp32-server/graphs/contributors) | Thanks to [all code contributors](https://github.com/xinnan-tech/xiaozhi-esp32-server/graphs/contributors), your efforts have made the project more robust and powerful. |
 
 
 <a href="https://star-history.com/#xinnan-tech/xiaozhi-esp32-server&Date">
