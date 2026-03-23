@@ -21,6 +21,7 @@ Hỗ trợ giao thức MQTT+UDP, giao thức Websocket, điểm truy cập MCP, 
   <a href="./README_en.md"><img alt="README in English" src="https://img.shields.io/badge/English-DFE0E5"></a>
   <a href="./README_vi.md"><img alt="Tiếng Việt" src="https://img.shields.io/badge/Tiếng Việt-DBEDFA"></a>
   <a href="./README_de.md"><img alt="Deutsch" src="https://img.shields.io/badge/Deutsch-DFE0E5"></a>
+  <a href="./README_pt_BR.md"><img alt="Português (Brasil)" src="https://img.shields.io/badge/Português (Brasil)-DFE0E5"></a>
   <a href="https://github.com/xinnan-tech/xiaozhi-esp32-server/releases">
     <img alt="GitHub Contributors" src="https://img.shields.io/github/v/release/xinnan-tech/xiaozhi-esp32-server?logo=docker" />
   </a>
@@ -182,8 +183,8 @@ Dự án này cung cấp hai phương pháp triển khai, vui lòng chọn theo 
 #### 🚀 Lựa chọn phương pháp triển khai
 | Phương pháp triển khai | Đặc điểm | Tình huống áp dụng | Tài liệu triển khai | Yêu cầu cấu hình | Video hướng dẫn |
 |---------|------|---------|---------|---------|---------|
-| **Cài đặt tối giản** | Đối thoại thông minh, IOT, MCP, cảm nhận thị giác | Môi trường cấu hình thấp, dữ liệu lưu trong tệp cấu hình, không cần cơ sở dữ liệu | [①Phiên bản Docker](./docs/Deployment.md#%E6%96%B9%E5%BC%8F%E4%B8%80docker%E5%8F%AA%E8%BF%90%E8%A1%8Cserver) / [②Triển khai mã nguồn](./docs/Deployment.md#%E6%96%B9%E5%BC%8F%E4%BA%8C%E6%9C%AC%E5%9C%B0%E6%BA%90%E7%A0%81%E5%8F%AA%E8%BF%90%E8%A1%8Cserver)| 2 nhân 4GB nếu dùng `FunASR`, 2 nhân 2GB nếu toàn API | - |
-| **Cài đặt toàn bộ module** | Đối thoại thông minh, IOT, điểm truy cập MCP, nhận dạng giọng nói, cảm nhận thị giác, OTA, bảng điều khiển thông minh | Trải nghiệm đầy đủ tính năng, dữ liệu lưu trong cơ sở dữ liệu |[①Phiên bản Docker](./docs/Deployment_all.md#%E6%96%B9%E5%BC%8F%E4%B8%80docker%E8%BF%90%E8%A1%8C%E5%85%A8%E6%A8%A1%E5%9D%97) / [②Triển khai mã nguồn](./docs/Deployment_all.md#%E6%96%B9%E5%BC%8F%E4%BA%8C%E6%9C%AC%E5%9C%B0%E6%BA%90%E7%A0%81%E8%BF%90%E8%A1%8C%E5%85%A8%E6%A8%A1%E5%9D%97) / [③Hướng dẫn tự động cập nhật triển khai mã nguồn](./docs/dev-ops-integration.md) | 4 nhân 8GB nếu dùng `FunASR`, 2 nhân 4GB nếu toàn API| [Video hướng dẫn khởi động mã nguồn cục bộ](https://www.bilibili.com/video/BV1wBJhz4Ewe) |
+| **Cài đặt tối giản** | Đối thoại thông minh, quản lý đơn tác nhân | Môi trường cấu hình thấp, dữ liệu lưu trong tệp cấu hình, không cần cơ sở dữ liệu | [①Phiên bản Docker](./docs/Deployment.md#%E6%96%B9%E5%BC%8F%E4%B8%80docker%E5%8F%AA%E8%BF%90%E8%A1%8Cserver) / [②Triển khai mã nguồn](./docs/Deployment.md#%E6%96%B9%E5%BC%8F%E4%BA%8C%E6%9C%AC%E5%9C%B0%E6%BA%90%E7%A0%81%E5%8F%AA%E8%BF%90%E8%A1%8Cserver)| 2 nhân 4GB nếu dùng `FunASR`, 2 nhân 2GB nếu toàn API | - |
+| **Cài đặt toàn bộ module** | Đối thoại thông minh, quản lý đa người dùng, quản lý đa tác nhân, bảng điều khiển thông minh | Trải nghiệm đầy đủ tính năng, dữ liệu lưu trong cơ sở dữ liệu |[①Phiên bản Docker](./docs/Deployment_all.md#%E6%96%B9%E5%BC%8F%E4%B8%80docker%E8%BF%90%E8%A1%8C%E5%85%A8%E6%A8%A1%E5%9D%97) / [②Triển khai mã nguồn](./docs/Deployment_all.md#%E6%96%B9%E5%BC%8F%E4%BA%8C%E6%9C%AC%E5%9C%B0%E6%BA%90%E7%A0%81%E8%BF%90%E8%A1%8C%E5%85%A8%E6%A8%A1%E5%9D%97) / [③Hướng dẫn tự động cập nhật triển khai mã nguồn](./docs/dev-ops-integration.md) | 4 nhân 8GB nếu dùng `FunASR`, 2 nhân 4GB nếu toàn API| [Video hướng dẫn khởi động mã nguồn cục bộ](https://www.bilibili.com/video/BV1wBJhz4Ewe) |
 
 Câu hỏi thường gặp và hướng dẫn liên quan, vui lòng tham khảo [liên kết này](./docs/FAQ.md)
 
@@ -210,10 +211,10 @@ Công cụ kiểm tra dịch vụ: https://2662r3426b.vicp.fun/test/
 
 | Tên module | Cài đặt miễn phí cho người mới | Cấu hình streaming |
 |:---:|:---:|:---:|
-| ASR(Nhận dạng giọng nói) | FunASR(Local) | 👍FunASR(Chế độ GPU cục bộ) |
-| LLM(Mô hình lớn) | ChatGLMLLM(Zhipu glm-4-flash) | 👍AliLLM(qwen3-235b-a22b-instruct-2507) hoặc 👍DoubaoLLM(doubao-1-5-pro-32k-250115) |
-| VLLM(Mô hình lớn thị giác) | ChatGLMVLLM(Zhipu glm-4v-flash) | 👍QwenVLVLLM(Qwen qwen2.5-vl-3b-instructh) |
-| TTS(Tổng hợp giọng nói) | ✅LinkeraiTTS(Lingxi streaming) | 👍HuoshanDoubleStreamTTS(Tổng hợp giọng nói streaming kép Volcano) hoặc 👍AliyunStreamTTS(Tổng hợp giọng nói streaming Alibaba Cloud) |
+| ASR(Nhận dạng giọng nói) | FunASR(Local) | 👍XunfeiStreamASR(Xunfei Streaming) |
+| LLM(Mô hình lớn) | glm-4-flash(Zhipu) | 👍qwen-flash(Alibaba Bailian) |
+| VLLM(Mô hình lớn thị giác) | glm-4v-flash(Zhipu) | 👍qwen2.5-vl-3b-instructh(Alibaba Bailian) |
+| TTS(Tổng hợp giọng nói) | ✅LinkeraiTTS(Lingxi streaming) | 👍HuoshanDoubleStreamTTS(Volcano Streaming) |
 | Intent(Nhận dạng ý định) | function_call(Gọi hàm) | function_call(Gọi hàm) |
 | Memory(Chức năng bộ nhớ) | mem_local_short(Bộ nhớ ngắn hạn cục bộ) | mem_local_short(Bộ nhớ ngắn hạn cục bộ) |
 
@@ -241,7 +242,7 @@ Dự án này cung cấp các công cụ kiểm tra sau để giúp bạn xác m
 | Đối thoại thông minh | Hỗ trợ nhiều LLM(Mô hình ngôn ngữ lớn), thực hiện đối thoại thông minh |
 | Cảm nhận thị giác | Hỗ trợ nhiều VLLM(Mô hình lớn thị giác), thực hiện tương tác đa phương thức |
 | Nhận dạng ý định | Hỗ trợ nhận dạng ý định mô hình lớn gắn ngoài, gọi hàm tự chủ mô hình lớn, cung cấp cơ chế xử lý ý định dạng plugin |
-| Hệ thống bộ nhớ | Hỗ trợ bộ nhớ ngắn hạn cục bộ, bộ nhớ giao diện mem0ai, có chức năng tóm tắt bộ nhớ |
+| Hệ thống bộ nhớ | Hỗ trợ bộ nhớ ngắn hạn cục bộ, bộ nhớ giao diện mem0ai, bộ nhớ thông minh PowerMem, có chức năng tóm tắt bộ nhớ |
 | Kho tri thức | Hỗ trợ kho tri thức RAGFlow, cho phép mô hình lớn đánh giá cần gọi kho tri thức trước khi trả lời |
 | Gọi công cụ | Hỗ trợ giao thức IOT phía client, giao thức MCP phía client, giao thức MCP phía server, giao thức điểm truy cập MCP, hàm công cụ tùy chỉnh |
 | Gửi lệnh | Dựa vào giao thức MQTT, hỗ trợ gửi lệnh MCP từ bảng điều khiển thông minh xuống thiết bị ESP32 |
@@ -259,7 +260,7 @@ Nếu bạn là một nhà phát triển phần mềm, đây có một [Lá thư
 ---
 
 ## Hệ sinh thái sản phẩm 👬
-Xiaozhi là một hệ sinh thái, khi bạn sử dụng sản phẩm này, bạn cũng có thể xem các [dự án xuất sắc](https://github.com/78/xiaozhi-esp32?tab=readme-ov-file#%E7%9B%B8%E5%85%B3%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE) khác trong hệ sinh thái này
+Xiaozhi là một hệ sinh thái, khi bạn sử dụng sản phẩm này, bạn cũng có thể xem các [dự án xuất sắc](https://github.com/78/xiaozhi-esp32/blob/main/README_zh.md#%E7%9B%B8%E5%85%B3%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE) khác trong hệ sinh thái này
 
 ---
 
@@ -329,6 +330,7 @@ Trên thực tế, bất kỳ VLLM nào hỗ trợ gọi giao diện openai đ�
 |   Loại   |      Tên nền tảng       | Phương pháp sử dụng |   Mô hình thu phí    | Ghi chú |
 |:------:|:---------------:|:----:|:---------:|:--:|
 | Memory |     mem0ai      | Gọi giao diện | Hạn mức 1000 lần/tháng |    |
+| Memory |     [powermem](./docs/powermem-integration.md)    | Tóm tắt cục bộ | Phụ thuộc vào LLM và DB |  OceanBase mã nguồn mở, hỗ trợ tìm kiếm thông minh  |
 | Memory | mem_local_short | Tóm tắt cục bộ |    Miễn phí     |    |
 | Memory |     nomem       | Chế độ không có bộ nhớ |    Miễn phí     |    |
 

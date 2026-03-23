@@ -173,8 +173,8 @@ export default {
         fetchFirmwareList() {
             this.loading = true;
             const params = {
-                pageNum: this.currentPage,
-                pageSize: this.pageSize,
+                page: this.currentPage,
+                limit: this.pageSize,
                 firmwareName: this.searchName || "",
                 orderField: "create_date",
                 order: "desc"
@@ -299,9 +299,9 @@ export default {
             }
 
             const paramCount = params.length;
-            this.$confirm(this.$t('otaManagement.confirmBatchDelete', { paramCount }), 'Warning', {
-                confirmButtonText: 'OK',
-                cancelButtonText: 'Cancel',
+            this.$confirm(this.$t('otaManagement.confirmBatchDelete', { paramCount }), this.$t('common.warning'), {
+                confirmButtonText: this.$t('common.confirm'),
+                cancelButtonText: this.$t('common.cancel'),
                 type: 'warning',
                 distinguishCancelAndClose: true
             }).then(() => {
@@ -505,7 +505,6 @@ export default {
     justify-content: space-between;
     align-items: center;
     margin-top: 10px;
-    padding-bottom: 10px;
 }
 
 .ctrl_btn {
@@ -735,7 +734,7 @@ export default {
 }
 
 .el-table {
-    --table-max-height: calc(100vh - 40vh);
+    // --table-max-height: calc(100vh - 40vh);
     max-height: var(--table-max-height);
 
     .el-table__body-wrapper {
