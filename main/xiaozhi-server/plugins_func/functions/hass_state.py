@@ -1,8 +1,7 @@
-from plugins_func.register import register_function, ToolType, ActionResponse, Action
-from plugins_func.functions.hass_init import initialize_hass_handler
+import httpx
 from config.logger import setup_logging
-import asyncio
-import requests
+from plugins_func.functions.hass_init import initialize_hass_handler
+from plugins_func.register import register_function, ToolType, ActionResponse, Action
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -10,6 +9,24 @@ if TYPE_CHECKING:
 
 TAG = __name__
 logger = setup_logging()
+
+hass_get_state_function_desc = {
+    "type": "function",
+    "function": {
+        "name": "hass_get_state",
+        "description": "获取homeassistant里设备的状态,包括查询灯光亮度、颜色、色温,媒体播放器的音量,设备的暂停、继续操作",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "entity_id": {
+                    "type": "string",
+                    "description": "需要操作的设备id,homeassistant里的entity_id",
+                }
+            },
+            "required": ["entity_id"],
+        },
+    },
+}
 
 hass_set_state_function_desc = {
     "type": "function",
@@ -53,14 +70,28 @@ hass_set_state_function_desc = {
 }
 
 
+@register_function("hass_get_state", hass_get_state_function_desc, ToolType.SYSTEM_CTL)
+async def hass_get_state(conn: "ConnectionHandler", entity_id=""):
+    try:
+        ha_response = await handle_hass_get_state(conn, entity_id)
+        return ActionResponse(Action.REQLLM, ha_response, None)
+    except httpx.TimeoutException:
+        logger.bind(tag=TAG).error("获取Home Assistant状态超时")
+        return ActionResponse(Action.ERROR, "请求超时", None)
+    except Exception as e:
+        error_msg = f"执行Home Assistant操作失败"
+        logger.bind(tag=TAG).error(error_msg)
+        return ActionResponse(Action.ERROR, error_msg, None)
+
+
 @register_function("hass_set_state", hass_set_state_function_desc, ToolType.SYSTEM_CTL)
-def hass_set_state(conn: "ConnectionHandler", entity_id="", state=None):
+async def hass_set_state(conn: "ConnectionHandler", entity_id="", state=None):
     if state is None:
         state = {}
     try:
-        ha_response = handle_hass_set_state(conn, entity_id, state)
+        ha_response = await handle_hass_set_state(conn, entity_id, state)
         return ActionResponse(Action.REQLLM, ha_response, None)
-    except asyncio.TimeoutError:
+    except httpx.TimeoutException:
         logger.bind(tag=TAG).error("设置Home Assistant状态超时")
         return ActionResponse(Action.ERROR, "请求超时", None)
     except Exception as e:
@@ -69,7 +100,62 @@ def hass_set_state(conn: "ConnectionHandler", entity_id="", state=None):
         return ActionResponse(Action.ERROR, error_msg, None)
 
 
-def handle_hass_set_state(conn: "ConnectionHandler", entity_id, state):
+async def handle_hass_get_state(conn: "ConnectionHandler", entity_id):
+    ha_config = initialize_hass_handler(conn)
+    api_key = ha_config.get("api_key")
+    base_url = ha_config.get("base_url")
+    url = f"{base_url}/api/states/{entity_id}"
+    headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
+
+    async with httpx.AsyncClient(timeout=httpx.Timeout(5.0, connect=3.0)) as client:
+        response = await client.get(url, headers=headers)
+
+    if response.status_code == 200:
+        responsetext = "设备状态:" + response.json()["state"] + " "
+        logger.bind(tag=TAG).info(f"api返回内容: {response.json()}")
+
+        if "media_title" in response.json()["attributes"]:
+            responsetext = (
+                responsetext
+                + "正在播放的是:"
+                + str(response.json()["attributes"]["media_title"])
+                + " "
+            )
+        if "volume_level" in response.json()["attributes"]:
+            responsetext = (
+                responsetext
+                + "音量是:"
+                + str(response.json()["attributes"]["volume_level"])
+                + " "
+            )
+        if "color_temp_kelvin" in response.json()["attributes"]:
+            responsetext = (
+                responsetext
+                + "色温是:"
+                + str(response.json()["attributes"]["color_temp_kelvin"])
+                + " "
+            )
+        if "rgb_color" in response.json()["attributes"]:
+            responsetext = (
+                responsetext
+                + "rgb颜色是:"
+                + str(response.json()["attributes"]["rgb_color"])
+                + " "
+            )
+        if "brightness" in response.json()["attributes"]:
+            responsetext = (
+                responsetext
+                + "亮度是:"
+                + str(response.json()["attributes"]["brightness"])
+                + " "
+            )
+        logger.bind(tag=TAG).info(f"查询返回内容: {responsetext}")
+        return responsetext
+    else:
+        return f"切换失败，错误码: {response.status_code}"
+
+
+async def handle_hass_set_state(conn: "ConnectionHandler", entity_id, state):
     ha_config = initialize_hass_handler(conn)
     api_key = ha_config.get("api_key")
     base_url = ha_config.get("base_url")
@@ -169,7 +255,10 @@ def handle_hass_set_state(conn: "ConnectionHandler", entity_id, state):
         data = {"entity_id": entity_id, arg: value}
     url = f"{base_url}/api/services/{domain}/{action}"
     headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
-    response = requests.post(url, headers=headers, json=data, timeout=5)  # 设置5秒超时
+
+    async with httpx.AsyncClient(timeout=httpx.Timeout(5.0, connect=3.0)) as client:
+        response = await client.post(url, headers=headers, json=data)
+
     logger.bind(tag=TAG).info(
         f"设置状态:{description},url:{url},return_code:{response.status_code}"
     )
